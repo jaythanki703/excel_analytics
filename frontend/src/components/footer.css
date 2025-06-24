@@ -1,0 +1,189 @@
+.footer {
+  background-color: #00274d;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 5px 20px 10px; /* reduced bottom padding */
+  margin-top: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+}
+
+
+
+.footer-top {
+  /* border-bottom: 1px solid #444; ← REMOVE this line */
+  padding-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* === Company Info === */
+.company-info {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* ensures top alignment */
+  text-align: left;
+  padding-top: 15px;             /* fine-tune to match heading level */
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer-logo {
+  width: 45px;
+  height: auto;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.tagline {
+  font-size: 16px;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* === Quick Links === */
+.quick-links {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quick-links h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links li {
+  margin-bottom: 10px;
+}
+
+.quick-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* === Contact Info === */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* aligns all items including heading */
+  text-align: left;
+}
+
+
+.contact-info h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.contact-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #ccc;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ffffff;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 8px; /* reduces space between lines */
+}
+
+.contact-icon {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+/* === Footer Bottom === */
+.footer-bottom {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 1px; /* reduced from auto */
+  padding-top: 10px; /* reduced padding */
+  border-top: 1px solid #444;
+  color: #ccc;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .company-info,
+  .quick-links,
+  .contact-info {
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-row {
+    justify-content: center;
+  }
+
+  .quick-links ul {
+    padding-left: 0;
+  }
+}

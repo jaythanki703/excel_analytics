@@ -1,0 +1,44 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00274d;
+  padding: 12px 24px;
+  color: white;
+  flex-wrap: nowrap;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.navbar-logo {
+  height: 60px;       /* Medium size */
+  width: auto;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.company-name {
+  font-size: 32px;     /* Medium size */
+  font-weight: 800;    /* Still bold, but not too heavy */
+  color: white;
+  line-height: 1.2;
+  white-space: nowrap;
+  display: block;
+}
+
+
+.navbar-links a {
+  color: white;
+  margin-left: 24px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}

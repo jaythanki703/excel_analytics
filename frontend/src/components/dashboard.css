@@ -1,0 +1,399 @@
+/* ===== Layout ===== */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ===== Top Navbar ===== */
+.dashboard-navbar {
+  background-color: #00274d;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 55px;
+  height: 55px;
+  margin-right: 16px;
+}
+
+.company-name {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.logout-btn {
+  padding: 12px 24px;
+  background-color: #f44336;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* ===== Body Layout ===== */
+.dashboard-body {
+  display: flex;
+  flex: 1;
+}
+
+/* ===== Sidebar ===== */
+.dashboard-sidebar {
+  width: 220px;
+  background-color: #e0f0ff;
+  color: #00274d;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-top-right-radius: 17px;
+  border-bottom-right-radius: 17px;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 14px 0;
+  padding: 14px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 18px;
+}
+
+.sidebar-links li .icon {
+  font-size: 22px;
+  color: #00274d;
+}
+
+.sidebar-links li:hover {
+  background-color: #d0e7ff;
+}
+
+.sidebar-links li.active {
+  background-color: #b3daff;
+  font-weight: bold;
+}
+
+/* ===== Main Section ===== */
+.dashboard-main {
+  flex: 1;
+  padding: 30px;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #fff1f8, #e6f7ff, #f3ffe6, #fff8e1, #f9f0ff);
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #00274d;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+.dashboard-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.dashboard-box {
+  flex: 1;
+  min-width: 240px;
+  max-width: 300px;
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 3px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-box h3 {
+  font-size: 20px;
+  color: #00274d;
+  margin-bottom: 10px;
+}
+
+.dashboard-box p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00274d;
+}
+
+.dashboard-box:hover {
+  transform: translateY(-4px);
+}
+
+/* Match classes used in JSX */
+.dashboard-box.files-uploaded {
+  border-color: #1e88e5; /* Blue */
+}
+
+.dashboard-box.charts-generated {
+  border-color: #43a047; /* Green */
+}
+
+.dashboard-box.downloaded-files {
+  border-color: #fb8c00; /* Orange */
+}
+
+.dashboard-box.last-login {
+  border-color: #8e24aa; /* Purple */
+}
+
+.dashboard-box.member-since {
+  border-color: #d81b60; /* Pink */
+}
+
+/* ===== Profile Section ===== */
+.profile-section {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profile-section .form-group {
+  margin-bottom: 24px;
+}
+
+.profile-section label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #00274d;
+}
+
+.profile-section input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.profile-section input:focus {
+  border-color: #00274d;
+}
+
+.profile-section .form-group p {
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+}
+
+.error {
+  color: #e53935;
+  font-size: 15px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* ===== Button Styles ===== */
+.edit-btn,
+.change-pass-btn,
+.save-btn,
+.submit-btn,
+.upload-btn {
+  display: inline-block;
+  margin: 12px 10px 0 0;
+  padding: 12px 26px;
+  background-color: #00274d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.edit-btn:hover,
+.change-pass-btn:hover,
+.save-btn:hover,
+.submit-btn:hover,
+.upload-btn:hover {
+  background-color: #003366;
+}
+
+/* ===== Password Section ===== */
+.password-section {
+  margin-top: 24px;
+}
+
+.password-section label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #00274d;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.password-section input {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.password-section input:focus {
+  border-color: #00274d;
+}
+
+/* ===== Upload Section ===== */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.upload-section p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.upload-box input[type="file"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.selected-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.selected-file span {
+  font-size: 16px;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.remove-file {
+  background-color: transparent;
+  border: none;
+  color: #e53935;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.remove-file:hover {
+  color: #c62828;
+}
+
+/* ===== Excel Preview Container ===== */
+.file-preview {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 39, 77, 0.1);
+  padding: 10px;
+}
+
+/* ===== Excel Preview Table ===== */
+.preview-table {
+  width: max-content;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.preview-table th,
+.preview-table td {
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 14.5px;
+  white-space: nowrap;
+}
+
+.preview-table th {
+  background-color: #00274d;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.preview-table tr:nth-child(even) {
+  background-color: #f4faff;
+}
+
+.preview-table tr:hover {
+  background-color: #e6f2ff;
+}
+
+.preview-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+/* ===== Analyze Section ===== */
+.analyze-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}

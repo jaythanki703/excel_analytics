@@ -1,0 +1,226 @@
+/* ===== Global Reset & Scrollbar ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f3f7fb, #eaf0f7);
+  color: #333;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* ===== Main Layout ===== */
+.analyze-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+/* ===== Left Panel (Form) ===== */
+.left-panel {
+  width: 320px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== Form Fields ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #00274d;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+select {
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #00274d;
+  box-shadow: 0 0 4px rgba(0, 39, 77, 0.3);
+}
+
+/* ===== Radio Buttons ===== */
+.form-group input[type="radio"] {
+  margin-right: 6px;
+  margin-left: 4px;
+}
+
+/* ===== Error Messages ===== */
+.error {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* ===== Buttons ===== */
+.center-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.generate-btn,
+.clear-btn {
+  flex: 1;
+  background: linear-gradient(to right, #00274d, #014080);
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+.generate-btn:hover,
+.clear-btn:hover {
+  background-color: #014080;
+  transform: scale(1.05);
+}
+
+/* ===== Right Panel (Chart Display) ===== */
+.right-panel {
+  width: 60%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  /* Reduce height */
+  min-height: 308px; /* 410px - 25% = 307.5px */
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* ===== Chart Container ===== */
+.chart-box {
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99%; /* 🔻 reduced from 100% to 75% */
+  margin: 0 auto; /* ✅ center the chart */
+  overflow-x: auto;
+}
+
+.chart-box .js-plotly-plot {
+  width: 100% !important;
+  max-width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  height: 400px !important;
+}
+
+
+/* ===== Chart Placeholder ===== */
+.chart-placeholder {
+  font-size: 18px;
+  color: #888;
+  text-align: center;
+  padding: 30px 20px;
+  line-height: 1.6;
+}
+
+/* ===== Download / Save Buttons ===== */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.action-buttons button {
+  background-color: #00274d;
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+.action-buttons button:hover {
+  background-color: #014080;
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive Layout ===== */
+@media (max-width: 1024px) {
+  .analyze-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .right-panel {
+    padding: 20px;
+  }
+
+  .chart-box {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .center-buttons,
+  .action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .generate-btn,
+  .clear-btn,
+  .action-buttons button {
+    width: 100%;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .chart-placeholder {
+    font-size: 16px;
+    padding: 20px 12px;
+  }
+}

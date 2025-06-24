@@ -1,0 +1,108 @@
+/* GLOBAL SETUP */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* prevent horizontal scroll globally */
+  overflow-y: hidden; /* disable vertical scroll by default */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden; /* default: no vertical scroll */
+}
+
+/* Scrollable Pages */
+/* Scrollable Pages */
+.homepage-scroll,
+.about-scroll {
+  overflow-y: auto !important; /* enable scroll on homepage & about only */
+}
+
+
+/* NAVBAR */
+.navbar {
+  background-color: #003366;
+  color: white;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  flex-shrink: 0;
+  overflow-x: hidden;
+}
+
+/* HOMEPAGE STYLES */
+.homepage {
+  flex: 1;
+  background: linear-gradient(135deg,
+    #fff1f8,
+    #e6f7ff,
+    #f3ffe6,
+    #fff8e1,
+    #f9f0ff
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  overflow-x: hidden;
+}
+
+/* CENTERED CONTENT */
+.center-content {
+  background-color: transparent;
+  color: #00274d;
+  padding: 30px 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 90%;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #003366;
+  color: white;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Custom Toastify styling: white background and black text */
+.custom-toast-container {
+  width: 100%;
+  max-width: 700px;
+}
+
+.custom-toast {
+  font-size: 22px;
+  padding: 24px 32px;
+  min-height: 80px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  background: #ffffff;       /* white background */
+  color: #000000;            /* black text */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
