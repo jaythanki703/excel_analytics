@@ -18,19 +18,39 @@ import ForgotPasswordPage from './components/ForgotPasswordPage';
 import ResetPasswordPage from './components/ResetPasswordPage';
 import AboutPage from './components/AboutPage';
 import DashboardPage from './components/DashboardPage';
+import AdminPanelPage from './components/AdminPanelPage'; // ✅ Import admin panel
 
 import './App.css';
 
-// 🔐 Protected route component
+// 🔐 Protected route (for any authenticated user)
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   return token ? children : <Navigate to="/login" />;
 };
 
+// 🔐 Admin-only protected route
+const AdminProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  const user = (() => {
+    try {
+      const data = sessionStorage.getItem('user');
+      return data && data !== 'undefined' ? JSON.parse(data) : null;
+    } catch {
+      return null;
+    }
+  })();
+
+  if (!token || !user || user.role !== 'Admin') {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
+};
+
 function AppContent() {
   const location = useLocation();
 
-  // Show Navbar only on the following routes
+  // Show Navbar only on public routes
   const showNavbar = [
     '/',
     '/login',
@@ -43,7 +63,7 @@ function AppContent() {
   const isScrollable =
     location.pathname === '/' || location.pathname === '/about';
 
-  // ✅ Safe JSON parsing of user
+  // ✅ Parse user from session
   const user = (() => {
     try {
       const data = sessionStorage.getItem('user');
@@ -79,6 +99,7 @@ function AppContent() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+
           <Route
             path="/dashboard"
             element={
@@ -87,6 +108,16 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminProtectedRoute>
+                <AdminPanelPage user={user} onLogout={handleLogout} />
+              </AdminProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

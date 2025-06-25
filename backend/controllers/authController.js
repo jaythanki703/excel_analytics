@@ -28,7 +28,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// ===== User Login =====
 exports.login = async (req, res) => {
   const { email, password, role } = req.body;
 
@@ -41,20 +40,27 @@ exports.login = async (req, res) => {
       return res.status(401).json({ msg: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
+    // ✅ Save the old login time to previousLogin
+    user.previousLogin = user.lastLogin || user.createdAt;
 
-    const previousLogin = user.lastLogin || user.createdAt;
+    // ✅ Now update lastLogin to the current time
     user.lastLogin = new Date();
     await user.save();
 
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
     res.json({
-      token,
       msg: `Welcome ${user.name}! You have successfully logged in.`,
+      token,
       user: {
         name: user.name,
         email: user.email,
         role: user.role,
-        lastLogin: previousLogin,
+        lastLogin: user.previousLogin,       // ⬅️ now returns correct previous login
         memberSince: user.createdAt,
       },
     });
@@ -63,6 +69,7 @@ exports.login = async (req, res) => {
     res.status(500).json({ msg: 'Server error during login' });
   }
 };
+
 
 // ===== Forgot Password =====
 exports.forgotPassword = async (req, res) => {

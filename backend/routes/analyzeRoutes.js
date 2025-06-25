@@ -1,26 +1,29 @@
+// backend/routes/analyzeRoutes.js
+
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const upload = multer(); // using memory storage for PDFs
-const protect = require('../middleware/authMiddleware');
+const upload = multer(); // use memory storage for chart PDFs
+
+const { protect } = require('../middleware/authMiddleware'); // ✅ FIXED HERE
 
 const {
   saveAnalysis,
   getChartPDF,
   getAnalysisHistory,
-  deleteAnalysis, // ✅ Import delete function
+  deleteAnalysis,
 } = require('../controllers/analyzeController');
 
-// ✅ Save a new analysis
+// ✅ Save a new analysis (PDF upload)
 router.post('/save', protect, upload.single('chartPDF'), saveAnalysis);
 
-// ✅ View a saved PDF
+// ✅ View PDF by ID
 router.get('/pdf/:id', protect, getChartPDF);
 
-// ✅ View all previous analyses by user
+// ✅ Get all analysis history for logged-in user
 router.get('/history', protect, getAnalysisHistory);
 
-// ✅ Delete an analysis by ID
+// ✅ Delete specific analysis by ID
 router.delete('/:id', protect, deleteAnalysis);
 
 module.exports = router;

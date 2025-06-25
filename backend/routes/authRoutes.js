@@ -12,7 +12,9 @@ const {
   incrementDownloads,
 } = require('../controllers/authController');
 
-const protect = require('../middleware/authMiddleware');
+
+const { protect } = require('../middleware/authMiddleware'); // ✅ correct
+
 
 // ==== Public Routes ====
 router.post('/login', login);

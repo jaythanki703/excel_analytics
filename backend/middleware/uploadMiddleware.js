@@ -1,29 +1,32 @@
-const multer = require('multer');
-const path = require('path');
+// backend/middleware/uploadMiddleware.js
 
-// Store uploaded files in memory for parsing with XLSX
+const multer = require('multer');
+
+// Memory storage keeps the uploaded file in RAM (no disk writes)
 const storage = multer.memoryStorage();
 
-// Custom file filter to allow only Excel files
+// Optional: add file filter to allow only Excel files
 const fileFilter = (req, file, cb) => {
-  const ext = path.extname(file.originalname).toLowerCase();
-  const isValidExt = ext === '.xls' || ext === '.xlsx';
-  const isValidMime =
-    file.mimetype === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
-    file.mimetype === 'application/vnd.ms-excel';
-
-  if (isValidExt && isValidMime) {
-    cb(null, true); // ✅ Accept file
+  if (
+    file.mimetype === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || // .xlsx
+    file.mimetype === 'application/vnd.ms-excel' // .xls
+  ) {
+    cb(null, true);
   } else {
-    cb(new Error('Only Excel files (.xls or .xlsx) are allowed')); // ❌ Reject file
+    cb(new Error('Only Excel files are allowed (.xls or .xlsx)'), false);
   }
 };
 
-// Multer configuration
+// Optional: limit file size to 5MB
+const limits = {
+  fileSize: 5 * 1024 * 1024, // 5MB
+};
+
+// Create the multer instance
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Limit: 5MB
+  limits,
 });
 
-module.exports = upload;
+module.exports = upload; // ✅ exported directly

@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    previousLogin: {
+      type: Date,
+      default: null,
+    },
     filesUploaded: {
       type: Number,
       default: 0,
