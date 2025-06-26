@@ -14,6 +14,8 @@ const AdminPanelPage = () => {
   const [users, setUsers] = useState([]);
   const [adminInfo, setAdminInfo] = useState({});
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 5;
   const navigate = useNavigate();
 
   const getAuthConfig = () => {
@@ -97,6 +99,12 @@ const AdminPanelPage = () => {
     return () => clearInterval(interval);
   }, [fetchProfile, fetchDashboardData]);
 
+  // Pagination Logic
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+  const totalPages = Math.ceil(users.length / usersPerPage);
+
   return (
     <div className="admin-panel">
       <ToastContainer position="top-right" autoClose={3000} />
@@ -151,14 +159,14 @@ const AdminPanelPage = () => {
             </tr>
           </thead>
           <tbody>
-            {users.length === 0 ? (
+            {currentUsers.length === 0 ? (
               <tr>
                 <td colSpan="9" style={{ textAlign: 'center' }}>No users found.</td>
               </tr>
             ) : (
-              users.map((user, index) => (
+              currentUsers.map((user, index) => (
                 <tr key={user._id}>
-                  <td>{index + 1}</td>
+                  <td>{indexOfFirstUser + index + 1}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
@@ -180,6 +188,29 @@ const AdminPanelPage = () => {
             )}
           </tbody>
         </table>
+
+        {/* Pagination Controls */}
+        {users.length > usersPerPage && (
+          <div className="pagination-controls">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            <span>Page {currentPage} of {totalPages}</span>
+            <button
+              onClick={() =>
+                setCurrentPage(prev =>
+                  prev < totalPages ? prev + 1 : prev
+                )
+              }
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
 
       {showProfileModal && (
